@@ -69,7 +69,7 @@ function listItemTemplate(data) {
 }
 
 function getArmy() {
-  return $.ajax('/api/shirt')
+  return $.ajax('/api/ARMY')
     .then(res => {
       console.log("Results from getArmy()", res);
       return res;
@@ -80,10 +80,10 @@ function getArmy() {
     });
 }
 
-function refreshShirtList() {
+function refreshArmyList() {
   getArmy()
     .then(ARMY => {
       const data = {ARMY: ARMY};
-      $('#list-container').html(listItemTemplate(data.shirts));
+      $('#list-container').html(listItemTemplate(data.ARMY));
     })
 }
