@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <meta charset="utf-8"/>
+    <!-- name displayed in tab -->
+  	<title>Scorched Plastic: An Army Men Wargame</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css"></link>
+    <script type="text/javascript" src="js/jquery-1.4.min.js"></script>
+    <!-- show the content of the active js navbar tab, hide otherwise -->
+    <style>
+      .nav .active a { color: red; }
+      .tab-pane { display: none; }
+      .tab-pane.active { display: block; }
+    </style>
+  </head>
+
+  <body>
+    <!-- camoflage title -->
+      <div class="header-wrapper">
+        <h1>Scorched Plastic</h1>
+      </div>
+    <!-- red subtitle -->
+    <div class="header-wrapper">
+      <h6>An Army Men Wargame</h6>
+    </div>
+    <!-- placing image in another element for more control over styling -->
+    <div class="home-img">
+      <img src="img/river_assault.jpg" style="width: 100%" alt="Army Men battle scene">
+    </div>
+    <!-- setting "About" tab active by default -->
+    <ul id="nav-tab" class="nav no-bullet">
+      <li class="active"><a href="#about">What it is</a></li>
+      <li><a href="#components">Components</a></li>
+      <li><a href="#rules">Rules</a></li>
+      <li><a href="#units+accessories">Units and Accessories</a></li>
+    </ul>
+    <div class="tab-content"></div>
+    <!-- about tab -->
+    <div id="about" class="tab-pane active">
+      <p class="p1">
+        If you're like me, you grew up playing with little Plastic Army Men, but
+        as the years passed, I found myself wanting something more sophisticated
+        than throwing marbles at the opposing side. Still, it's Plastic Army Men;
+        simplicity should be the name of the game. Yet, rulesets I found for
+        organized tabletop play were all overly complex, so I made my own. This
+        site will teach the absolute basics of the game, which I have named
+        "Scorched Plastic". That means, we are playing mostly on a soldier vs
+        soldier level, with few to no vehicles. However, because of the ease in
+        obtaining the stereotypical Timmee figures upon which this game is based,
+        building larger forces is more feasible than with typical expensive
+        wargaming figures.
+      </p>
+    </div>
+    <!-- components tab -->
+    <div id="components" class="tab-pane">
+      <ul class="custom-bullet">
+        <li class="p1">2+ players</li>
+        <li class="p1">Army Men figures/accessories</li>
+        <li class="p1">4 dice</li>
+        <li class="p1">Measuring tape</li>
+      </ul>
+    </div>
+    <!-- rules tab -->
+    <div id="rules" class="tab-pane">
+      <p class="p1">Sorry, there isn't time to write out all the rules right now. Check back later!</p>
+    </div>
+    <!-- units tab -->
+    <div id="units+accessories" class="tab-pane">
+      <div class="all-caps">
+        <div id="thumbnail">
+          Infantry:
+          <div class="flex-wrapper">
+            <div>
+              <div class="p2">Riflemen</div> <!-- title -->
+              <a href="img/riflemen.jpg"> <!-- full-size image -->
+                <img src="img/riflemen.jpg" rel="Riflemen"> <!-- thumbnail and description -->
+              </a>
+            </div>
+            <div>
+              <div class="p2">Flamethrower</div>
+              <a href="img/flamethrower.jpg">
+                <img src="img/flamethrower.jpg" rel="Flamethrower">
+              </a>
+            </div>
+            <div>
+              <div class="p2">Machine Gunner</div>
+              <a href="img/mg.jpg">
+                <img src="img/mg.jpg" rel="Machine Gunner">
+              </a>
+            </div>
+            <div>
+              <div class="p2">Bazooka Man</div>
+              <a href="img/bazooka.jpg">
+                <img src="img/bazooka.jpg" rel="Bazooka Man" />
+              </a>
+            </div>
+            <div>
+              <div class="p2">Minesweeper</div>
+              <a href="img/minesweeper.jpg">
+                <img src="img/minesweeper.jpg" rel="Minesweeper">
+              </a>
+            </div>
+            <div>
+              <div class="p2">Officer</div>
+              <a href="img/officer.jpg">
+                <img src="img/officer.jpg" rel="Officer">
+              </a>
+            </div>
+            <div>
+              <div class="p2">Radio Operator</div>
+              <a href="img/radio.jpg">
+                <img src="img/radio.jpg" rel="Radio Operator">
+              </a>
+            </div>
+            <div>
+              <div class="p2">Mortar Man</div>
+              <a href="img/mortar.jpg">
+                <img src="img/mortar.jpg" rel="Mortar Man">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="all-caps">
+          Armor:
+          <div id="thumbnail" class="flex-wrapper">
+            <div>
+              <div class="p2">Tank</div>
+              <a href="img/tank.jpg">
+                <img src="img/tank.jpg" rel="Tank">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="all-caps">
+          Accessories:
+          <div id="thumbnail" class="flex-wrapper">
+            <div>
+              <div class="p2">Sandbags</div>
+              <a href="img/sandbags.jpg">
+                <img src="img/sandbags.jpg" rel="Sandbags">
+              </a>
+            </div>
+            <div>
+              <div class="p2">Barbed Wire</div>
+              <a href="img/barbed-wire.jpg">
+                <img src="img/barbed-wire.jpg" rel="Barbed Wire">
+              </a>
+            </div>
+            <div>
+              <div class="p2">Flag</div>
+              <a href="img/flag.jpg">
+                <img src="img/flag.jpg" rel="Flag">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="all-caps">
+          Add-On:
+          
+        </div>
+        <div id="large"></div>
+        <div id="background"></div>
+      </div>
+    </div>
+
+    <script src="js/script.js"></script>
+
+    <footer></footer>
+
+  </body>
+
+</html>
