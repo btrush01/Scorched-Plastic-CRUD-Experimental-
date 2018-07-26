@@ -76,49 +76,50 @@
             <div>
               <div class="p2">Riflemen</div> <!-- title -->
               <a href="img/riflemen.jpg"> <!-- full-size image -->
-                <img src="img/riflemen.jpg" rel="Riflemen"> <!-- thumbnail and description -->
+                <img src="img/riflemen.jpg"
+                rel="Riflemen are the backbone of any infantry force. Their accurate and fast firing weapons are devastating in ranged combat."> <!-- thumbnail and description -->
               </a>
             </div>
             <div>
               <div class="p2">Flamethrower</div>
               <a href="img/flamethrower.jpg">
-                <img src="img/flamethrower.jpg" rel="Flamethrower">
+                <img src="img/flamethrower.jpg" rel="The Flamethrower will melt any infantry caught in its stream of fire, especially those clinging to cover, but has limited range.">
               </a>
             </div>
             <div>
               <div class="p2">Machine Gunner</div>
               <a href="img/mg.jpg">
-                <img src="img/mg.jpg" rel="Machine Gunner">
+                <img src="img/mg.jpg" rel="The Machinegun serves as area denial by suppressing infantry within its field of fire, but can't match the accuracy of Riflemen, or the lethality of a Flmethrower.">
               </a>
             </div>
             <div>
               <div class="p2">Bazooka Man</div>
               <a href="img/bazooka.jpg">
-                <img src="img/bazooka.jpg" rel="Bazooka Man" />
+                <img src="img/bazooka.jpg" rel="The Bazooka is a purely anti-vehicle and structure weapon. Though slow to fire, it hits hard.">
               </a>
             </div>
             <div>
               <div class="p2">Minesweeper</div>
               <a href="img/minesweeper.jpg">
-                <img src="img/minesweeper.jpg" rel="Minesweeper">
+                <img src="img/minesweeper.jpg" rel="Minesweepers trade time for safety, nulifying the attrition of moving through minefields at the price of speed. Given enough time, they can even disarm a minefield.">
               </a>
             </div>
             <div>
               <div class="p2">Officer</div>
               <a href="img/officer.jpg">
-                <img src="img/officer.jpg" rel="Officer">
+                <img src="img/officer.jpg" rel="Officers provide a leadership bonus to nearby troops by directly enhancing their combat abilities. Their binoculars also allow them to order mortarmen within their field of command to fire on any target within line of sight.">
               </a>
             </div>
             <div>
               <div class="p2">Radio Operator</div>
               <a href="img/radio.jpg">
-                <img src="img/radio.jpg" rel="Radio Operator">
+                <img src="img/radio.jpg" rel="Radio Operators are needed to communicate with indirect fire units, like Mortar Men, to call in bombardments to support front-line infantry.">
               </a>
             </div>
             <div>
               <div class="p2">Mortar Man</div>
               <a href="img/mortar.jpg">
-                <img src="img/mortar.jpg" rel="Mortar Man">
+                <img src="img/mortar.jpg" rel="Mortars are deadly weapons capable of bombarding targets without taking fire in return. The extreme ranges at which they can engage make this somewhat of a trial and error process, however.">
               </a>
             </div>
           </div>
@@ -129,7 +130,7 @@
             <div>
               <div class="p2">Tank</div>
               <a href="img/tank.jpg">
-                <img src="img/tank.jpg" rel="Tank">
+                <img src="img/tank.jpg" rel="Tanks have powerful cannons, high mobility, and good armor to back it up. They are capable of bouncing rocket and cannon hits to the front and sides.">
               </a>
             </div>
           </div>
@@ -140,33 +141,49 @@
             <div>
               <div class="p2">Sandbags</div>
               <a href="img/sandbags.jpg">
-                <img src="img/sandbags.jpg" rel="Sandbags">
+                <img src="img/sandbags.jpg" rel="Sandbags are excelent in absorbing small explosions, and are thick enough to stop bullets, but won't stand up to cannons.">
               </a>
             </div>
             <div>
               <div class="p2">Barbed Wire</div>
               <a href="img/barbed-wire.jpg">
-                <img src="img/barbed-wire.jpg" rel="Barbed Wire">
+                <img src="img/barbed-wire.jpg" rel="Barbed Wire denies area to infantry, but is flattened if tanks roll over it.">
               </a>
             </div>
             <div>
               <div class="p2">Flag</div>
               <a href="img/flag.jpg">
-                <img src="img/flag.jpg" rel="Flag">
+                <img src="img/flag.jpg" rel="Flags serve to mark objectives to be captured.">
               </a>
             </div>
           </div>
         </div>
         <div class="all-caps">
+          Use the form below, and build your own army.
+
           Add-On:
-          <!--if I put id other tham thumbnail from style.css, then lightbox won't work-->
+          <span id="add-army-button" class="glyphicon glyphicon-align-left glyphicon-plus-sign" aria-hidden="true" ></span>
           <div id="thumbnail" class="flex-wrapper">
-            <div class="p2">
-                <!--how can I call refreshArmyList() here?
-                retrieve data from the backend, loop through it and assemble the inner html divs as a string,
-                insert the assembled html string into container div
-                use something like $('#your-id-here').html(yourHTMLStringHere) somewhere
-                -->
+            <div id = "list-container" class="p2">
+              <div id="form-container" class="panel">
+                <form id="add-army-form" style="display: none;">
+                  <input type="hidden" id="army-id" value="" />
+                  <div class="form-group">
+                    <label for="army-name">Name</label>
+                    <input type="text" class="form-control" id="army-name" placeholder="Name">
+                  </div>
+                  <div class="form-group">
+                    <label for="army-description">Description</label>
+                    <input type="text" class="form-control" id="shirt-description" placeholder="Description">
+                  </div>
+                  <div class="form-group">
+                    <label for="army-image">Image</label>
+                    <input type="text" class="form-control" id="army-image" placeholder="Image">
+                  </div>
+                  <button type="button" onclick="submitArmyForm()" class="btn btn-success">Submit</button>
+                  <button type="button" onclick="cancelArmyForm()" class="btn btn-link">cancel</button>
+                </form>
+              </div>
             </div>
           </div>
         </div>
@@ -176,7 +193,13 @@
     </div>
 
     <script src="js/script.js"></script>
-    <script>refreshArmyList()</script>
+    <script>
+      $('#add-shirt-button').on('click', () => {
+        showAddArmyForm();
+      });
+      refreshArmyList()
+      setForm()
+    </script>
 
     <footer></footer>
 

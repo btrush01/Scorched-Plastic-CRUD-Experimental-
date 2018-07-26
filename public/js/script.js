@@ -61,7 +61,11 @@ function listItemTemplate(data) {
   data.forEach(item => {
     compiled += `
       <li class="list-group-item">
-        ${item.name} - ${item.description}
+        ${item.name} - ${item.description} - ${item.image}
+        <span class="pull-right">
+          <button type="button" class="btn btn-xs btn-default">Edit</button>
+        </span>
+        <button type="button" class="btn btn-xs btn-danger" onclick="handleDeleteArmyClick(this)" data-army-id="${item._id}">Del</button>
       </li>
     `;
   });
@@ -86,4 +90,113 @@ function refreshArmyList() {
       const data = {ARMY: ARMY};
       $('#list-container').html(listItemTemplate(data.ARMY));
     })
+}
+
+----
+
+function submitArmyForm() {
+  console.log("You clicked 'submit'. Congratulations.");
+
+  const armyData = {
+    name: $('#army-name').val(),
+    description: $('#army-description').val(),
+    image: $('#army-image').val(),
+    _id: $('#army-id').val()
+  };
+
+  let method, url; //what?
+  if (armyData.id) {
+    method = 'PUT';
+    url = '/api/army';
+  } else {
+    method = 'POST';
+    url = '/api/army';
+  }
+
+  fetch('/api/army', {
+    method: 'post',
+    body: JSON.stringify(armyData),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(response => response.json())
+  .then(army => {
+    console.log("we have posted the data", army);
+    setForm();
+    refreshArmyList();
+  })
+  .catch(err => {
+    console.error("A terrible thing has happened", err);
+  })
+}
+
+function cancelArmyForm() {
+  setForm()
+  hideAddArmyForm();
+}
+
+function showAddArmyForm(){
+  $('#add-army-form').show();
+}
+
+function hideAddArmyForm(){
+  $('#add-army-form').hide();
+}
+
+function handleEditArmyClick (element) {
+  const armyId = element.getAttribute('data-army-id')
+
+  const army = window.shirtList.find(army => army._id === armyId)
+  if (army) {
+    setForm(army)
+  }
+  showAddArmyForm()
+}
+
+function handleDeleteArmyClick(element) {
+  const armyId = element.getAttribute('data-army-id');
+
+  i (confirm("This will delete the entry. Is that ok?")){
+    console.log("Army", armyId, "is DOOMED!!!!!!");
+  }
+}
+
+function deleteArmy(armyId) {
+  const url = '/api/army/' + armyId;
+
+  fetch(url, {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' }
+  })
+    .then(response => response.json())
+    .then(response => {
+      console.log("DOOOOOOOOOM!!!!!");
+      refreshArmyList();
+    })
+    .catch(err => {
+      console.error("I'm not dead yet!", err);
+    });
+}
+
+function setForm (data) {
+  data = data || {}
+
+  const army = {
+    name: data.name || '',
+    description: data.description || '',
+    price: data.image || '',
+    _id: data._id || ''
+  }
+
+  $('#army-name').val(army.name)
+  $('#army-description').val(army.description)
+  $('#army-image').val(army.image)
+  $('#army-id').val(army._id)
+
+  if (army._id) {
+    $('#form-label').text('Edit army')
+  } else {
+    $('#form-label').text('Add army')
+  }
 }

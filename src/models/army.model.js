@@ -4,5 +4,25 @@ const mongoose = require("mongoose");
 const ArmySchema = new mongoose.Schema({
   name: String,
   description: String,
-  img: 'path goes here, /public/img/yourimage.png', // what to type here?
+  img: String
+  deleted: { type: Boolean }
 });
+
+const Army = mongoose.model("Army", ShirtSchema);
+
+Army.count({}, function (err, count) {
+    if (err) {
+        throw err;
+    }
+    if (count > 0) return;
+
+    const seedArmy = require("./army.seed.json");
+    Army.create(seedArmy, function (err, newArmy) {
+        if (err) {
+            throw err;
+        }
+        console.log("DB seeded")
+    });
+});
+
+module.exports = Army;
