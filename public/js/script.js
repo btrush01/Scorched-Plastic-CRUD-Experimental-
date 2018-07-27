@@ -63,7 +63,7 @@ function listItemTemplate(data) {
       <div class="child">
         <img class="card-img-top" src="${item.image}">
         <div class="card-body">
-          <div class="card-title">${item.name} - ${item.price}</div>
+          <div class="card-title">${item.name} - ${item.description}</div>
           <p class="card-text">${item.image}</p>
           <span class="pull-right">
             <button type="button" class="btn btn-xs btn-default" onclick="handleEditArmyClick(this)" data-army-id="${item._id}">Edit</button>
@@ -111,7 +111,7 @@ function submitArmyForm() {
   console.log(armyData);
 
   let method, url;
-  if (armyData.id) {
+  if (armyData._id) {
     method = 'PUT';
     url = '/api/army';
   } else {
@@ -149,11 +149,19 @@ function handleEditArmyClick (element) {
   const armyId = element.getAttribute('data-army-id')
 
   const army = window.armyList.find(army => army._id === armyId)
-  if (army) {
-    setForm(army)
+  function handleEditArmyClick (element) {
+    const armyId = element.getAttribute('data-army-id')
+
+    const army = window.armyList.find(army => army._id === armyId)
+    if (army) {
+      $('#army-name').val(army.name)
+      $('#army-description').val(army.description)
+      $('#army-price').val(army.image)
+      $('#army-id').val(army._id)
+    }
+
+    showAddShirtForm()
   }
-  showAddArmyForm()
-}
 
 function handleDeleteArmyClick(element) {
   const armyId = element.getAttribute('data-army-id');
