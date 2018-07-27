@@ -66,8 +66,8 @@ function listItemTemplate(data) {
           <div class="card-title">${item.name} - ${item.price}</div>
           <p class="card-text">${item.image}</p>
           <span class="pull-right">
-            <span class="oi oi-pencil" onclick="handleEditArmyClick(this)" data-armyid="${item._id}" data-toggle="modal" data-target="#armyModal" style="cursor: pointer;"></span>
-            <span class="oi oi-minus" onclick="handleDeleteArmyClick(this)" data-armyid="${item._id}" style="cursor: pointer;"></span>
+            <button type="button" class="btn btn-xs btn-default" onclick="handleEditArmyClick(this)" data-army-id="${item._id}">Edit</button>
+            <button type="button" class="btn btn-xs btn-default" onclick="handleDeleteArmyClick(this)" data-army-id="${item._id}">Delete</button>
           </span>
         </div>
       </div>
