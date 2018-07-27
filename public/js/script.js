@@ -105,7 +105,8 @@ function submitArmyForm() {
     name: $('#army-name').val(),
     description: $('#army-description').val(),
     image: $('#army-image').val(),
-    _id: $('#army-id').val()
+    _id: $('#army-id').val(),
+    console.log("The id is " + _id)
   };
 
   console.log(armyData);
@@ -119,8 +120,8 @@ function submitArmyForm() {
     url = '/api/army';
   }
 
-  fetch('/api/army', {
-    method: 'post',
+  fetch(url, {
+    method: method,
     body: JSON.stringify(armyData),
     headers: {
       'Content-Type': 'application/json'
@@ -149,19 +150,16 @@ function handleEditArmyClick (element) {
   const armyId = element.getAttribute('data-army-id')
 
   const army = window.armyList.find(army => army._id === armyId)
-  function handleEditArmyClick (element) {
-    const armyId = element.getAttribute('data-army-id')
-
-    const army = window.armyList.find(army => army._id === armyId)
-    if (army) {
-      $('#army-name').val(army.name)
-      $('#army-description').val(army.description)
-      $('#army-price').val(army.image)
-      $('#army-id').val(army._id)
-    }
-
-    showAddShirtForm()
+  if (army) {
+    $('#army-name').val(army.name)
+    $('#army-description').val(army.description)
+    $('#army-price').val(army.image)
+    $('#army-id').val(army._id)
   }
+
+  showAddArmyForm()
+}
+
 
 function handleDeleteArmyClick(element) {
   const armyId = element.getAttribute('data-army-id');
