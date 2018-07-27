@@ -3,21 +3,21 @@ const router = require('express').Router();
 
 let army = require("../models/army.model.js");
 
-army.find({}, function(err, army) {
-  if (err) {
-    console.log(err);
-    return res.status(500).json(err);
-  }
-
-  res.json(shirts);
-});
+// army.find({}, function(err, army) {
+//   if (err) {
+//     console.log(err);
+//     return res.status(500).json(err);
+//   }
+//
+//   res.json(army);
+// });
 
 const ARMY = [
   {id: 1, name: 'Measuring Tape', description: 'Measuring Tape', img: 'img/measuring-tape.JPG'}
 ];
 
 router.get('/army', function(req, res, next) {
-  army.find({deleted: {$ne: true}}, function (err, shirts) {
+  army.find({deleted: {$ne: true}}, function (err, army) {
     if (err) {
       console.log(err)
       return res.status(500).json(err)
@@ -83,7 +83,7 @@ router.put('/army/:armyid', function(req, res, next) {
 });
 
 router.delete('/army/:armyId', function (req, res, next) {
-  const armyId = req.params;
+  const armyId = req.params.armyId;
 
   army.findById(armyId, function (err, army) {
     if (err) {
@@ -94,7 +94,7 @@ router.delete('/army/:armyId', function (req, res, next) {
       return res.status(404).json({message: 'Army not found'})
     }
 
-    shirt.deleted = true
+    army.deleted = true
 
     army.save(function (err, doomedArmy) {
       res.json(doomedArmy)

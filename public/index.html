@@ -8,7 +8,7 @@
   	<title>Scorched Plastic: An Army Men Wargame</title>
 
     <link rel="stylesheet" type="text/css" href="style.css"></link>
-    <script type="text/javascript" src="js/jquery-1.4.min.js"></script>
+
     <!-- show the content of the active js navbar tab, hide otherwise -->
     <style>
       .nav .active a { color: red; }
@@ -159,31 +159,27 @@
           </div>
         </div>
         <div class="all-caps">
-          Use the form below, and build your own army.
-
           Add-On:
           <span id="add-army-button" class="glyphicon glyphicon-align-left glyphicon-plus-sign" aria-hidden="true" ></span>
           <div id="thumbnail" class="flex-wrapper">
-            <div id = "list-container" class="p2">
-              <div id="form-container" class="panel">
-                <form id="add-army-form" style="display: none;">
-                  <input type="hidden" id="army-id" value="" />
-                  <div class="form-group">
-                    <label for="army-name">Name</label>
-                    <input type="text" class="form-control" id="army-name" placeholder="Name">
-                  </div>
-                  <div class="form-group">
-                    <label for="army-description">Description</label>
-                    <input type="text" class="form-control" id="shirt-description" placeholder="Description">
-                  </div>
-                  <div class="form-group">
-                    <label for="army-image">Image</label>
-                    <input type="text" class="form-control" id="army-image" placeholder="Image">
-                  </div>
-                  <button type="button" onclick="submitArmyForm()" class="btn btn-success">Submit</button>
-                  <button type="button" onclick="cancelArmyForm()" class="btn btn-link">cancel</button>
-                </form>
-              </div>
+            <div id="list-container" class="p2"></div>
+            <div id="form-container" class="panel">
+              <form id="add-army-form">
+                <div class="form-group">
+                  <label for="army-name">Name</label>
+                  <input type="text" class="form-control" id="army-name" placeholder="Name">
+                </div>
+                <div class="form-group">
+                  <label for="army-description">Description</label>
+                  <input type="text" class="form-control" id="army-description" placeholder="Description">
+                </div>
+                <div class="form-group">
+                  <label for="army-image">Image</label>
+                  <input type="text" class="form-control" id="army-image" placeholder="Image">
+                </div>
+                <button type="button" onclick="submitArmyForm()" class="btn btn-success">Submit</button>
+                <button type="button" onclick="cancelArmyForm()" class="btn btn-link">cancel</button>
+              </form>
             </div>
           </div>
         </div>
@@ -192,13 +188,13 @@
       </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="js/script.js"></script>
     <script>
-      $('#add-shirt-button').on('click', () => {
-        showAddArmyForm();
-      });
-      refreshArmyList()
-      setForm()
+      $(document).ready(function(){
+        refreshArmyList()
+        setForm()
+      })
     </script>
 
     <footer></footer>

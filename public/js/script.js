@@ -59,21 +59,26 @@ $(document).ready(function() {
 function listItemTemplate(data) {
   var compiled = '';
   data.forEach(item => {
-    compiled += `
-      <li class="list-group-item">
-        ${item.name} - ${item.description} - ${item.image}
-        <span class="pull-right">
-          <button type="button" class="btn btn-xs btn-default">Edit</button>
-        </span>
-        <button type="button" class="btn btn-xs btn-danger" onclick="handleDeleteArmyClick(this)" data-army-id="${item._id}">Del</button>
-      </li>
-    `;
-  });
+    compiled +=`
+      <div class="child">
+        <img class="card-img-top" src="${item.image}">
+        <div class="card-body">
+          <div class="card-title">${item.name} - ${item.price}</div>
+          <p class="card-text">${item.image}</p>
+          <span class="pull-right">
+            <span class="oi oi-pencil" onclick="handleEditArmyClick(this)" data-armyid="${item._id}" data-toggle="modal" data-target="#armyModal" style="cursor: pointer;"></span>
+            <span class="oi oi-minus" onclick="handleDeleteArmyClick(this)" data-armyid="${item._id}" style="cursor: pointer;"></span>
+          </span>
+        </div>
+      </div>
+    `
+  })
+  compiled = `<div class="parent" id="container">${compiled}</div>`
   return compiled;
 }
 
 function getArmy() {
-  return $.ajax('/api/ARMY')
+  return $.ajax('/api/army')
     .then(res => {
       console.log("Results from getArmy()", res);
       return res;
@@ -92,8 +97,6 @@ function refreshArmyList() {
     })
 }
 
-----
-
 function submitArmyForm() {
   console.log("You clicked 'submit'. Congratulations.");
 
@@ -104,7 +107,9 @@ function submitArmyForm() {
     _id: $('#army-id').val()
   };
 
-  let method, url; //what?
+  console.log(armyData);
+
+  let method, url;
   if (armyData.id) {
     method = 'PUT';
     url = '/api/army';
@@ -147,7 +152,7 @@ function hideAddArmyForm(){
 function handleEditArmyClick (element) {
   const armyId = element.getAttribute('data-army-id')
 
-  const army = window.shirtList.find(army => army._id === armyId)
+  const army = window.armyList.find(army => army._id === armyId)
   if (army) {
     setForm(army)
   }
@@ -157,8 +162,8 @@ function handleEditArmyClick (element) {
 function handleDeleteArmyClick(element) {
   const armyId = element.getAttribute('data-army-id');
 
-  i (confirm("This will delete the entry. Is that ok?")){
-    console.log("Army", armyId, "is DOOMED!!!!!!");
+  if (confirm("This will delete the entry. Is that ok?")){
+    deleteArmy(armyId)
   }
 }
 

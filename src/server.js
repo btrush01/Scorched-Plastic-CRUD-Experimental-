@@ -21,4 +21,4 @@ app.listen(config.port, function() {
 });
 
 // Connect to MongoDB and create/use database as configured
-mongoose.connection.openUri(`mongodb://${config.db.username}:${config.db.password}@${config.db.host}/${config.db.dbName}`);
+mongoose.connection.openUri(`mongodb://${config.db.username}:${config.db.password}@ds245901.mlab.com:45901/army_men`);

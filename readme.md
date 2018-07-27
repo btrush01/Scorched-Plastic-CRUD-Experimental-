@@ -1,0 +1,2 @@
+This experiment builds upon a past repository, but may not represent my vision for that final product. Thus, it made more sense to upload this as its own thing until I can decide how to better implement the CRUD concept. In its current form, I have maintained most of the front end, but introduced a simple form under an "Add-On" div that allows users to upload their own images, and provide whatever names and descriptions they want. Since it would be difficult to cover all Plastic Army Men toys, I thought this would be a fun way to let the user do it themselves.
+
