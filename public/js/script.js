@@ -92,6 +92,7 @@ function getArmy() {
 function refreshArmyList() {
   getArmy()
     .then(ARMY => {
+      window.armyList = ARMY;
       const data = {ARMY: ARMY};
       $('#list-container').html(listItemTemplate(data.ARMY));
     })
