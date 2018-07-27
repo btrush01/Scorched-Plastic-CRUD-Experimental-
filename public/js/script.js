@@ -138,15 +138,10 @@ function submitArmyForm() {
 
 function cancelArmyForm() {
   setForm()
-  hideAddArmyForm();
 }
 
 function showAddArmyForm(){
   $('#add-army-form').show();
-}
-
-function hideAddArmyForm(){
-  $('#add-army-form').hide();
 }
 
 function handleEditArmyClick (element) {
@@ -176,11 +171,11 @@ function deleteArmy(armyId) {
   })
     .then(response => response.json())
     .then(response => {
-      console.log("DOOOOOOOOOM!!!!!");
+      console.log("The content has been deleted");
       refreshArmyList();
     })
     .catch(err => {
-      console.error("I'm not dead yet!", err);
+      console.error("Nothing was deleted, and error occurred", err);
     });
 }
 
