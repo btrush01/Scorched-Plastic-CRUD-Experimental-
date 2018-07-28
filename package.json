@@ -12,6 +12,7 @@
     "body-parser": "^1.17.2",
     "dotenv": "^6.0.0",
     "express": "^4.14.0",
-    "mongoose": "^5.1.5"
+    "mongoose": "^5.1.5",
+    "package.json": "^2.0.1"
   }
 }
