@@ -1,3 +1,4 @@
+// src/models/army.model.js
 // Load mongoose package
 const mongoose = require("mongoose");
 

@@ -98,6 +98,7 @@ function refreshArmyList() {
     })
 }
 
+// what happens when submit is clicked
 function submitArmyForm() {
   console.log("You clicked 'submit'. Congratulations.");
 
@@ -137,6 +138,7 @@ function submitArmyForm() {
   })
 }
 
+// what happens if you click cancel
 function cancelArmyForm() {
   setForm()
 }
@@ -145,6 +147,7 @@ function showAddArmyForm(){
   $('#add-army-form').show();
 }
 
+// what happens if you click edit
 function handleEditArmyClick (element) {
   const armyId = element.getAttribute('data-army-id')
 
@@ -159,7 +162,7 @@ function handleEditArmyClick (element) {
   showAddArmyForm()
 }
 
-
+// what happens if you click delete
 function handleDeleteArmyClick(element) {
   const armyId = element.getAttribute('data-army-id');
 
@@ -185,6 +188,7 @@ function deleteArmy(armyId) {
     });
 }
 
+// what to do with data entered
 function setForm (data) {
   data = data || {}
 

@@ -3,10 +3,8 @@ const router = require('express').Router();
 
 let army = require("../models/army.model.js");
 
-const ARMY = [
-  {id: 1, name: 'Measuring Tape', description: 'Measuring Tape', img: 'img/measuring-tape.JPG'}
-];
 
+// How the 4 CRUD functions interact with the server in routes
 router.get('/army', function(req, res, next) {
   army.find({deleted: {$ne: true}}, function (err, army) {
     if (err) {

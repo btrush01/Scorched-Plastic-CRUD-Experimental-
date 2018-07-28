@@ -1,4 +1,5 @@
 // src/server.js
+// declare requirements
 const bodyParser = require('body-parser');
 const express = require('express');
 const app = express();
@@ -8,6 +9,7 @@ const path = require('path');
 const publicPath = path.resolve(__dirname, '../public');
 const router = require('./routes');
 
+// how to use them
 console.log(publicPath);
 
 app.use(express.static(publicPath));
