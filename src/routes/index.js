@@ -47,7 +47,7 @@ router.post('/army', function(req, res, next) {
   });
 });
 
-router.put('/army/:armyid', function(req, res, next) {
+router.put('/army/:armyId', function(req, res, next) {
   const armyId = req.params.armyId;
 
   army.findById(armyId, function(err, army) {
