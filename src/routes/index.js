@@ -3,15 +3,6 @@ const router = require('express').Router();
 
 let army = require("../models/army.model.js");
 
-// army.find({}, function(err, army) {
-//   if (err) {
-//     console.log(err);
-//     return res.status(500).json(err);
-//   }
-//
-//   res.json(army);
-// });
-
 const ARMY = [
   {id: 1, name: 'Measuring Tape', description: 'Measuring Tape', img: 'img/measuring-tape.JPG'}
 ];

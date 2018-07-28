@@ -106,7 +106,6 @@ function submitArmyForm() {
     description: $('#army-description').val(),
     image: $('#army-image').val(),
     _id: $('#army-id').val(),
-    console.log("The id is " + _id)
   };
 
   console.log(armyData);
@@ -114,7 +113,7 @@ function submitArmyForm() {
   let method, url;
   if (armyData._id) {
     method = 'PUT';
-    url = '/api/army';
+    url = '/api/army/' + armyData._id;
   } else {
     method = 'POST';
     url = '/api/army';
